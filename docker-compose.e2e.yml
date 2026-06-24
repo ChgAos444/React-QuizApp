@@ -1,0 +1,51 @@
+# Isolated end-to-end stack (WAT4 "Test Isolation").
+#
+# Brings up three throwaway, networked containers:
+#   - backend    : json-server REST API serving data/questions.json
+#   - frontend   : production build of the React app (talks to "backend")
+#   - playwright  : the Playwright test runner (a real browser) hitting "frontend"
+#
+# Everything lives on a private compose network, so the run is fully isolated
+# from the developer's machine and from any other run. Tear it down with
+#   docker compose -f docker-compose.e2e.yml down -v
+# Run it with the helper script scripts/run-e2e.ps1 / scripts/run-e2e.sh.
+
+services:
+  backend:
+    image: node:20-bullseye-slim
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "npx --yes json-server@0.17.4 --watch data/questions.json --host 0.0.0.0 --port 9000"
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:9000/questions').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+      interval: 2s
+      timeout: 5s
+      retries: 40
+
+  frontend:
+    build:
+      context: .
+      dockerfile: e2e.Dockerfile
+      args:
+        REACT_APP_API_URL: "http://backend:9000/questions"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.55.1-jammy
+    working_dir: /e2e
+    volumes:
+      - ./e2e:/e2e
+    environment:
+      BASE_URL: "http://frontend:3000"
+      CI: "true"
+    command: sh -c "npm install --no-audit --no-fund && npx playwright test"
+    depends_on:
+      frontend:
+        condition: service_healthy

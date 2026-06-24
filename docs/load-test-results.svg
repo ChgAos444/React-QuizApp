@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="860" height="380" fill="#ffffff"/>
+  <text x="430" y="28" text-anchor="middle" font-size="19" font-weight="700" fill="#1a1a1a">k6 Load Test Results — Quiz REST API (json-server, GET /questions)</text>
+
+  <!-- ============ Panel A: Throughput ============ -->
+  <text x="40" y="66" font-size="15" font-weight="700" fill="#1a1a1a">Throughput (requests / second)</text>
+  <!-- axis -->
+  <line x1="60" y1="80" x2="60" y2="200" stroke="#999" stroke-width="1"/>
+  <line x1="60" y1="200" x2="410" y2="200" stroke="#999" stroke-width="1"/>
+  <!-- bars: scale 200 rps -> 120px -->
+  <!-- Constant 19.5 -->
+  <rect x="95" y="188.3" width="70" height="11.7" fill="#4e79a7"/>
+  <text x="130" y="183" text-anchor="middle" font-size="12" fill="#333">19.5</text>
+  <text x="130" y="216" text-anchor="middle" font-size="12" fill="#333">Constant</text>
+  <!-- Ramp 44 -->
+  <rect x="200" y="173.6" width="70" height="26.4" fill="#59a14f"/>
+  <text x="235" y="168" text-anchor="middle" font-size="12" fill="#333">44.0</text>
+  <text x="235" y="216" text-anchor="middle" font-size="12" fill="#333">Ramp</text>
+  <!-- Spike 197.9 -->
+  <rect x="305" y="81.3" width="70" height="118.7" fill="#e15759"/>
+  <text x="340" y="75" text-anchor="middle" font-size="12" fill="#333">197.9</text>
+  <text x="340" y="216" text-anchor="middle" font-size="12" fill="#333">Spike</text>
+
+  <!-- ============ Panel B: Max latency ============ -->
+  <text x="470" y="66" font-size="15" font-weight="700" fill="#1a1a1a">Max response time (ms)</text>
+  <line x1="500" y1="80" x2="500" y2="200" stroke="#999" stroke-width="1"/>
+  <line x1="500" y1="200" x2="840" y2="200" stroke="#999" stroke-width="1"/>
+  <!-- scale 600 ms -> 120px -->
+  <!-- Constant 28.9 -->
+  <rect x="535" y="194.2" width="60" height="5.8" fill="#4e79a7"/>
+  <text x="565" y="189" text-anchor="middle" font-size="12" fill="#333">28.9</text>
+  <text x="565" y="216" text-anchor="middle" font-size="12" fill="#333">Constant</text>
+  <!-- Ramp 20.1 -->
+  <rect x="630" y="196" width="60" height="4" fill="#59a14f"/>
+  <text x="660" y="189" text-anchor="middle" font-size="12" fill="#333">20.1</text>
+  <text x="660" y="216" text-anchor="middle" font-size="12" fill="#333">Ramp</text>
+  <!-- Spike 580.4 -->
+  <rect x="725" y="83.9" width="60" height="116.1" fill="#e15759"/>
+  <text x="755" y="78" text-anchor="middle" font-size="12" fill="#333">580.4</text>
+  <text x="755" y="216" text-anchor="middle" font-size="12" fill="#333">Spike</text>
+
+  <!-- ============ Annotation / summary table ============ -->
+  <text x="40" y="262" font-size="13" font-weight="700" fill="#1a1a1a">Summary (all runs passed their thresholds, 0% errors):</text>
+  <text x="40" y="286" font-size="13" fill="#333">• Constant 20 VUs / 30s  →  p95 = 5.4 ms,  avg = 4.2 ms,  600 requests,  0 errors  (SLO p95 &lt; 500 ms met)</text>
+  <text x="40" y="308" font-size="13" fill="#333">• Ramp 0→100 VUs / 90s  →  p95 = 3.7 ms,  avg = 3.3 ms,  4 158 requests,  0 errors  (no saturation reached)</text>
+  <text x="40" y="330" font-size="13" fill="#333">• Spike 5→200 VUs / 50s  →  p95 = 3.8 ms but max = 580 ms,  10 271 requests,  0 errors  (transient tail-latency at surge)</text>
+  <text x="40" y="358" font-size="12.5" font-style="italic" fill="#666">Key insight: avg/p95 stay ~3–5 ms, yet the spike's max jumps to 580 ms — why percentiles AND max both matter.</text>
+</svg>

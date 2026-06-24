@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# production build output (generated)
+/build
+/coverage
+
+# CRA / misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+.DS_Store
+
+# Playwright (E2E) transient output
+e2e/test-results/
+e2e/playwright-report/
+e2e/last-run.log
+
+# Presentation render artifacts (the .pptx itself is committed)
+presentation/package.json
+presentation/package-lock.json
+presentation/*.pdf
+presentation/slide-*.jpg
+
+# NOTE: load-tests/results/* (html, json, txt) IS committed on purpose —
+# it is the evidence referenced by REPORT.md.

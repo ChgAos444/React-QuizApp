@@ -1,0 +1,13 @@
+{
+  "name": "react-quiz-e2e",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright end-to-end tests for the React Quiz App (run against a Docker-isolated stack).",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.1"
+  }
+}
