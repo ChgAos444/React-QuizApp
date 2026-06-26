@@ -15,8 +15,6 @@ Each member authored their own slice of the test pyramid (5 unit + 3 integration
 2 system/E2E + 1 load test = 11 tests per person, **33 tests in total**). Every test
 file carries an author header so ownership is unambiguous.
 
-> *AI tools used during the project are declared separately by the team.*
-
 ---
 
 ## 1. The Web Application

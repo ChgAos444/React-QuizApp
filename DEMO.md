@@ -8,7 +8,7 @@ big downloads during the demo.)
 Open a terminal in the project folder first:
 
 ```powershell
-cd C:\Users\arens\Desktop\React-QuizApp
+cd C:\Users\arens\OneDrive\Desktop\React-QuizApp
 ```
 
 > One-time only (if `node_modules` is missing, e.g. on a fresh machine):
