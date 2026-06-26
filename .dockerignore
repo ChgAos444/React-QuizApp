@@ -1,8 +1,10 @@
-node_modules
+**/node_modules
 build
 .git
 e2e
 load-tests
 docs
+presentation
+scripts
 *.md
 npm-debug.log
