@@ -4,7 +4,7 @@
 > suite (33 tests across the test pyramid: unit, integration, E2E and load) plus a
 > CI/CD pipeline and Docker-isolated end-to-end testing.
 > **See [`REPORT.md`](./REPORT.md) for the full testing documentation.**
-> Quick run instructions are in [REPORT.md §4](./REPORT.md#4-how-to-run-everything-no-local-node-needed--docker-only).
+> Quick run instructions are in [REPORT.md §5](./REPORT.md#5-how-to-run-everything).
 
 The "React Quiz App" is a dynamic and engaging web application built with React.js. This project offers a variety of features, including a complete responsive design for seamless use on different devices, a clean and intuitive user interface, and a timed quiz with a progress bar to track your progress. 
 

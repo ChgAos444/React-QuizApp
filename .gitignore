@@ -26,3 +26,7 @@ presentation/slide-*.jpg
 
 # NOTE: load-tests/results/* (html, json, txt) IS committed on purpose —
 # it is the evidence referenced by REPORT.md.
+
+# Local-only working files (not part of the submission)
+docker-compose.demo.yml
+TOMORROW-CHEATSHEET.md
