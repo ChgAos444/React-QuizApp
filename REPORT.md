@@ -16,8 +16,6 @@ test suite around it: **33 tests in total, 11 per person**, spread across every 
 of the *test pyramid* (unit, integration, end-to-end and load tests). Each test file
 names its author, so it's clear who wrote what.
 
-> New to the terms used here? There's a plain-English **glossary at the end (§6)**.
-
 ---
 
 ## 1. The application
@@ -197,29 +195,3 @@ docker run -d --name wat4-backend --network wat4-load -v "$PWD:/app" -w /app \
 docker run --rm --network wat4-load -v "$PWD/load-tests:/scripts" \
   -e TARGET=http://wat4-backend:9000 grafana/k6 run /scripts/03-spike.js
 ```
-
----
-
-## 6. Glossary — key terms in plain English
-
-* **Test pyramid** — a strategy: many fast tests at the bottom, few slow ones at the top.
-* **Unit test** — tests one small piece of code completely on its own.
-* **Integration test** — tests a piece together with the parts around it (or stand-ins).
-* **End-to-end (E2E) test** — tests the whole running app like a real user would.
-* **Load test** — measures performance when many users hit the app at once.
-* **Reducer** — the single function that holds all the quiz rules. You give it the
-  current state and an action; it returns the new state.
-* **State machine** — the idea that the app is always in one clear stage (loading,
-  ready, playing, finished, error) and moves between them on events.
-* **Mock / test double** — a fake stand-in for a real part, so you can test one piece
-  without running everything.
-* **jsdom** — a fake browser used so component tests can run without a real window.
-* **Page Object Model** — a tidy way to organise browser tests (one helper per screen).
-* **SLO (Service Level Objective)** — a performance target you promise to meet
-  (here: 95% of requests under 500 ms, under 1% errors).
-* **p95** — "95th percentile": 95% of requests were at least this fast. A fairer summary
-  than the average because it accounts for the slower ones.
-* **CI/CD (GitHub Actions)** — automation that runs all the tests on every code push.
-* **Docker container** — a sealed, throwaway box that runs software the same way on any
-  machine; we use it so tests are clean and repeatable.
-* **json-server** — a tiny tool that turns a data file into a real web backend.
